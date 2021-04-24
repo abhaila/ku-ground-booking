@@ -23,8 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
-# for secret APIs
-gem 'dotenv-rails', groups: [:development, :test]
+# Use cloudinary for hosting images and videos
+gem 'cloudinary', '~> 1.16.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

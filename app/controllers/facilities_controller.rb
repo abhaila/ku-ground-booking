@@ -1,0 +1,54 @@
+class FacilitiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
+  def index
+    @facilities = Facility.all
+  end
+
+  def new
+    @facility = Facility.new
+  end
+
+  def create
+    @facility = Facility.new(facility_params)
+
+    if @facility.save
+      redirect_to facility_path(@facility)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @facility = Facility.find(params[:id])
+  end
+
+  def update
+    @facility = Dacility.find(params[:id])
+    if @facility.update(facility_params)
+      redirect_to @facility, notice: 'facility was successfully updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @facility = Facility.find(params[:id])
+    @facility.destroy
+    redirect_to facilitys_path, notice: 'facility was successfully deleted'
+  end
+
+  private
+
+  def facility_params
+    params.require(:facility).permit(:name, :description, photos: [],
+                                    schedules_attributes: [
+                                      :id,
+                                      :opens_at,
+                                      :closes_at,
+                                      :weekday,
+                                      :_destroy,
+                                    ]
+                                  )
+  end
+end

@@ -1,0 +1,34 @@
+<%= form_for @facility do |s| %>
+<table class="schedule-editor">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Opens at</th>
+      <th>Closes at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% weekdays.each do |day| %>
+      <%= s.fields_for :regular_schedules, s.object.regular_schedules.find_or_initialize_by(weekday: day[:value]) do |sched| %>
+        <tr>
+          <td>
+            <%= sched.hidden_field :weekday %>
+            <div class="checkbox">
+              <%= sched.check_box :_destroy, {checked: sched.object.persisted?}, "0", "1" %>
+              <%= sched.label :_destroy, day[:label] %>
+            </div>
+          </td>
+          <td>
+            <%= sched.label :opens_at, class: "visually-hidden" %>
+            <%= sched.time_field :opens_at %>
+          </td>
+          <td>
+           <%= sched.label :closes_at, class: "visually-hidden" %>
+           <%= sched.time_field :closes_at %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

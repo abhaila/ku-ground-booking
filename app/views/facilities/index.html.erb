@@ -1,0 +1,14 @@
+<div class="container p-5">
+  <div class="cards-container">
+    <div class="cards">
+      <% @facilities.each do |facility| %>
+        <% if facility.photos.attached? %>
+          <%= link_to facility_path(facility), class: 'card-text' do  %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path facility.photos[0].key %>')"><%= facility.name %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+ </div>
+</div>

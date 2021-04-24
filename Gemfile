@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
-# CDN for image hosting
+# for secret APIs
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variant

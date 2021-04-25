@@ -1,5 +1,5 @@
 class FacilitiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @facilities = Facility.all
@@ -42,13 +42,12 @@ class FacilitiesController < ApplicationController
 
   def facility_params
     params.require(:facility).permit(:name, :description, photos: [],
-                                    schedules_attributes: [
-                                      :id,
-                                      :opens_at,
-                                      :closes_at,
-                                      :weekday,
-                                      :_destroy,
-                                    ]
-                                  )
+                                                          schedules_attributes: %i[
+                                                            id
+                                                            opens_at
+                                                            closes_at
+                                                            weekday
+                                                            _destroy
+                                                          ])
   end
 end

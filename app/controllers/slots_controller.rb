@@ -8,6 +8,10 @@ class SlotsController < ApplicationController
     @others = Slot.paginate(page: params[:page], per_page: 4).order('sort ASC')
   end
 
+  def new
+    @slot = Slot.new
+  end
+
   private
 
   def set_slot

@@ -9,4 +9,17 @@
   <h2>Kick off times at <%= @facility.name %> </h2>
 </div>
 
+<div>
+  <div class="simple-calendar">
+  <%= month_calendar(events: @slots, end_attribute: :end_time) do |date, slots| %>
+    <%= date %>
+
+    <% slots.each do |slot| %>
+      <div class="slot">
+        <p><%= slot.start_time %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 <%= link_to "Edit facility", edit_facility_path, class: "nav-link" %>

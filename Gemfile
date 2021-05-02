@@ -22,7 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-
+# for showing nice calendar style
+gem "simple_calendar", "~> 2.4"
 # Use cloudinary for hosting images and videos
 gem 'cloudinary', '~> 1.16.0'
 

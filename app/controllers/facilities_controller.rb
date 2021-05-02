@@ -28,7 +28,7 @@ class FacilitiesController < ApplicationController
   end
 
   def update
-    @facility = Dacility.find(params[:id])
+    @facility = Facility.find(params[:id])
     if @facility.update(facility_params)
       redirect_to @facility, notice: 'facility was successfully updated'
     else
@@ -45,13 +45,6 @@ class FacilitiesController < ApplicationController
   private
 
   def facility_params
-    params.require(:facility).permit(:name, :description, photos: [],
-                                                          schedules_attributes: %i[
-                                                            id
-                                                            opens_at
-                                                            closes_at
-                                                            weekday
-                                                            _destroy
-                                                          ])
+    params.require(:facility).permit(:name, :description, photos: [])
   end
 end

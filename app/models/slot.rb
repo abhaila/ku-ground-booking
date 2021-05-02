@@ -1,6 +1,4 @@
 class Slot < ApplicationRecord
-  has_many :facilities, through: :bookings
-  has_many :clients, through: :bookings
-  has_many :bookings, inverse_of: :slots
-  accepts_nested_attributes_for :bookings
+  has_many :facilities, inverse_of: :slots
+  has_many :bookings
 end

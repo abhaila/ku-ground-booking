@@ -1,0 +1,12 @@
+<%= simple_form_for @facility do |s| %>
+  <%= s.input :name %>
+  <%= s.input :description %>
+  <%= s.simple_fields_for :slots, Slot.new do |slot| %>
+    <%= slot.input :start_time,
+                   html5: true %>
+    <%= slot.input :end_time,
+                   html5: true %>
+    <%= slot.input :cost %>
+  <% end %>
+  <%= s.submit "Submit", class: "btn btn-ghost" %>
+<% end %>

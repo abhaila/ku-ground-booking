@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_150929) do
+ActiveRecord::Schema.define(version: 2021_05_02_170900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,11 +68,14 @@ ActiveRecord::Schema.define(version: 2021_04_25_150929) do
   end
 
   create_table "slots", force: :cascade do |t|
-    t.integer "duration"
     t.integer "cost"
-    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.bigint "facility_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.index ["facility_id"], name: "index_slots_on_facility_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,4 +94,5 @@ ActiveRecord::Schema.define(version: 2021_04_25_150929) do
   add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
   add_foreign_key "schedules", "facilities"
+  add_foreign_key "slots", "facilities"
 end

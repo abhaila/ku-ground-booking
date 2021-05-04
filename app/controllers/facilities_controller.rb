@@ -14,6 +14,7 @@ class FacilitiesController < ApplicationController
 
   def new
     @facility = Facility.new
+    @facility.slots.build
   end
 
   def create
@@ -32,6 +33,7 @@ class FacilitiesController < ApplicationController
 
   def update
     @facility = Facility.find(params[:id])
+
     if @facility.update(facility_params)
       redirect_to @facility, notice: 'facility was successfully updated'
     else
@@ -48,6 +50,9 @@ class FacilitiesController < ApplicationController
   private
 
   def facility_params
-    params.require(:facility).permit(:name, :description, photos: [])
+    params.require(:facility).permit(
+      :name, :description, photos: [],
+      slots_attributes: [:start_time, :end_time, :cost]
+    )
   end
 end

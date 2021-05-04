@@ -1,6 +1,7 @@
 <%= simple_form_for @facility do |s| %>
   <%= s.input :name %>
   <%= s.input :description %>
+  <%= s.input :photos, as: :file, input_html: { multiple: true } %>
   <%= s.simple_fields_for :slots, Slot.new do |slot| %>
     <%= slot.input :start_time,
                    html5: true %>

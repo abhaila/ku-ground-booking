@@ -10,16 +10,18 @@
 </div>
 
 <div>
-  <div class="simple-calendar">
-  <%= month_calendar(events: @slots, end_attribute: :end_time) do |date, slots| %>
-    <%= date %>
+  <div class="calendar-container">
+    <%= week_calendar(events: @slots, end_attribute: :end_time) do |date, slots| %>
+      <%= date %>
 
-    <% slots.each do |slot| %>
-      <div class="slot">
-        <p><%= slot.start_time %></p>
-      </div>
+      <% slots.each do |slot| %>
+        <div class="slot m-1">
+          <small><%= slot.start_time %></small>
+          <small><%= slot.end_time %></small>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <%= link_to "Edit facility", edit_facility_path, class: "nav-link" %>

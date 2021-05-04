@@ -9,18 +9,49 @@
   <h2>Kick off times at <%= @facility.name %> </h2>
 </div>
 
-<div>
-  <div class="calendar-container">
-    <%= week_calendar(events: @slots, end_attribute: :end_time) do |date, slots| %>
+<div class="d-flex">
+  <div class="container calendar-container flex-grow-1">
+    <%= week_calendar(number_of_days: 3, events: @slots, end_attribute: :end_time) do |date, slots| %>
       <%= date %>
 
       <% slots.each do |slot| %>
-        <div class="slot m-1">
-          <small><%= slot.start_time %></small>
-          <small><%= slot.end_time %></small>
+        <div class="slot m-1" data-toggle="modal" data-target="#exampleModalCenter">
+          <small><%= slot.start_time.strftime("%H:%M") %></small> - <small><%= slot.end_time.strftime("%H:%M") %></small>
         </div>
       <% end %>
     <% end %>
+  </div>
+  <div class="container w-40">
+    <div class="container">
+      <h2>Your basket</h2>
+      <ul></ul>
+      <div class="container">
+        <h3 class="lead">Subtotal</h3>
+        <span class="h3 basket__total" >
+        <span>Rs</span><span>0.00</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+# modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
 

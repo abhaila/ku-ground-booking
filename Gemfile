@@ -26,6 +26,8 @@ gem 'devise'
 gem "simple_calendar", "~> 2.4"
 # Use cloudinary for hosting images and videos
 gem 'cloudinary', '~> 1.16.0'
+# For JS modals
+gem 'popper_js', '~> 2.9.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

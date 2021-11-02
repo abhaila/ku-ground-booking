@@ -43,6 +43,6 @@ volley_ball.photos.attach(io: image3, filename: 'image3.jpg', content_type: 'ima
 # end
 
 puts "Done! #{User.count} users created."
-puts "Done! #{Facility.count} cars created."
+puts "Done! #{Facility.count} facilities created."
 # puts "Done! #{Booking.count} bookings created."
 # puts "Done! #{Review.count} reviews created."

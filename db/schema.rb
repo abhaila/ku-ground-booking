@@ -57,16 +57,6 @@ ActiveRecord::Schema.define(version: 2021_05_02_170900) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.bigint "facility_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "title"
-    t.index ["facility_id"], name: "index_schedules_on_facility_id"
-  end
-
   create_table "slots", force: :cascade do |t|
     t.integer "cost"
     t.datetime "created_at", precision: 6, null: false
@@ -93,6 +83,5 @@ ActiveRecord::Schema.define(version: 2021_05_02_170900) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
-  add_foreign_key "schedules", "facilities"
   add_foreign_key "slots", "facilities"
 end
